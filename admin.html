@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | FestiveDesigns</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .admin-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    
+    .admin-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .admin-nav {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .admin-nav a {
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+    
+    .admin-nav a:hover {
+      background: var(--primary-dark);
+    }
+    
+    .admin-section {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .stat-card {
+      background: #f8fafc;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+    
+    .stat-card h3 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+    
+    .upload-area {
+      border: 2px dashed #e5e7eb;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      margin: 1rem 0;
+      cursor: pointer;
+    }
+    
+    .upload-area:hover {
+      border-color: var(--primary);
+    }
+    
+    .items-grid {
+      display: grid;
+      gap: 1rem;
+    }
+    
+    .item-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+    }
+    
+    .item-card img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    
+    .item-info {
+      flex: 1;
+    }
+    
+    .item-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <i class="fas fa-palette"></i>
+        <span>FestiveDesigns Admin</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> Back to Site</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="admin-container">
+    <div class="admin-header">
+      <h1>Admin Panel</h1>
+      <p>Manage your posters and templates</p>
+    </div>
+
+    <!-- Statistics -->
+    <div class="admin-section">
+      <h2>Dashboard</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3 id="postersCount">0</h3>
+          <p>Total Posters</p>
+        </div>
+        <div class="stat-card">
+          <h3 id="templatesCount">0</h3>
+          <p>Total Templates</p>
+        </div>
+        <div class="stat-card">
+          <h3 id="downloadsCount">0</h3>
+          <p>Total Downloads</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="admin-nav">
+      <a href="#posters" class="nav-btn active" data-section="posters">Manage Posters</a>
+      <a href="#templates" class="nav-btn" data-section="templates">Manage Templates</a>
+      <a href="#upload" class="nav-btn" data-section="upload">Upload New</a>
+    </div>
+
+    <!-- Posters Section -->
+    <div class="admin-section" id="postersSection">
+      <h2>Manage Posters</h2>
+      <div class="items-grid" id="postersList">
+        <!-- Posters will be loaded here -->
+      </div>
+    </div>
+
+    <!-- Templates Section -->
+    <div class="admin-section" id="templatesSection" style="display: none;">
+      <h2>Manage Templates</h2>
+      <div class="items-grid" id="templatesList">
+        <!-- Templates will be loaded here -->
+      </div>
+    </div>
+
+    <!-- Upload Section -->
+    <div class="admin-section" id="uploadSection" style="display: none;">
+      <h2>Upload New Item</h2>
+      
+      <form id="uploadForm" aria-label="Upload New Item" autocomplete="off" novalidate>
+        <div class="form-group">
+          <label for="itemType">Item Type <span aria-hidden="true" style="color:red">*</span></label>
+          <select id="itemType" class="form-control" required aria-required="true" aria-label="Item Type">
+            <option value="">Select type</option>
+            <option value="poster">Poster</option>
+            <option value="template">Template</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="itemTitle">Title <span aria-hidden="true" style="color:red">*</span></label>
+          <input type="text" id="itemTitle" class="form-control" required aria-required="true" aria-label="Title" maxlength="60">
+        </div>
+        
+        <div class="form-group">
+          <label for="itemCategory">Category <span aria-hidden="true" style="color:red">*</span></label>
+          <select id="itemCategory" class="form-control" required aria-required="true" aria-label="Category">
+            <option value="">Select category</option>
+            <option value="christmas">Christmas</option>
+            <option value="diwali">Diwali</option>
+            <option value="eid">Eid</option>
+            <option value="newyear">New Year</option>
+          </select>
+        </div>
+        
+        <div class="form-group" id="formatGroup" style="display: none;">
+          <label for="itemFormat">File Format <span aria-hidden="true" style="color:red">*</span></label>
+          <select id="itemFormat" class="form-control" aria-label="File Format">
+            <option value="psd">PSD</option>
+            <option value="ai">AI</option>
+            <option value="png">PNG</option>
+            <option value="canva">Canva</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="itemImage">Preview Image <span aria-hidden="true" style="color:red">*</span></label>
+          <div class="file-upload" id="imageUpload" tabindex="0" aria-label="Upload preview image">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Click to upload preview image</p>
+            <input type="file" id="itemImage" class="file-input" accept="image/*" required aria-required="true" aria-label="Preview Image">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="itemFile">File to Download <span aria-hidden="true" style="color:red">*</span></label>
+          <div class="file-upload" id="fileUpload" tabindex="0" aria-label="Upload file to download">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p id="fileUploadText">Click to upload file</p>
+            <input type="file" id="itemFile" class="file-input" required aria-required="true" aria-label="File to Download">
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-success" style="width: 100%;" aria-label="Add Item">
+          <i class="fas fa-plus"></i> Add Item
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

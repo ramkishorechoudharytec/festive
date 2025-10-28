@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FestiveDesigns | Premium Festival Designs</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+      min-height: 100vh;
+    }
+    .hero {
+      background: linear-gradient(120deg, #6366f1 60%, #ec4899 100%);
+      color: white;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border-radius: 0 0 2rem 2rem;
+      box-shadow: 0 8px 32px 0 rgba(99,102,241,0.10);
+      animation: fadeInDown 1s;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .section-header, .container {
+      animation: fadeInUp 1s;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .section-title {
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, #6366f1, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+    .gallery {
+      margin-bottom: 2rem;
+    }
+    .card {
+      transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.03) translateY(-8px);
+      box-shadow: 0 12px 32px 0 rgba(99,102,241,0.10);
+    }
+    .filter-btn.active {
+      box-shadow: 0 2px 8px 0 rgba(99,102,241,0.10);
+    }
+    .footer-container {
+      border-radius: 1rem 1rem 0 0;
+      background: linear-gradient(120deg, #6366f1 60%, #ec4899 100%);
+      color: #fff;
+      box-shadow: 0 -8px 32px 0 rgba(99,102,241,0.10);
+    }
+    .footer-col h3 {
+      color: #fff;
+    }
+    .footer-links a {
+      color: #e0e7ff;
+    }
+    .footer-links a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      .hero { border-radius: 0 0 1rem 1rem; }
+      .footer-container { border-radius: 1rem 1rem 0 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <i class="fas fa-palette"></i>
+        <span>FestiveDesigns</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#posters">Posters</a></li>
+          <li><a href="#templates">Templates</a></li>
+          <li><a href="admin.html" class="admin-link" aria-label="Admin Panel"><i class="fas fa-cog"></i> Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Premium Festival Designs</h1>
+      <p>Download beautiful posters or editable templates for Christmas, Diwali, Eid, New Year and more!</p>
+      <div class="search-bar">
+  <input type="text" id="searchInput" placeholder="Search for designs..." aria-label="Search for designs" autocomplete="off">
+  <button id="searchBtn" aria-label="Search"><i class="fas fa-search"></i> Search</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Posters Section -->
+  <section class="container" id="posters">
+    <div class="section-header">
+      <h2 class="section-title">🎄 Festival Posters</h2>
+      <div class="filter-options">
+  <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+  <button class="filter-btn" data-filter="christmas" aria-pressed="false">Christmas</button>
+  <button class="filter-btn" data-filter="diwali" aria-pressed="false">Diwali</button>
+  <button class="filter-btn" data-filter="eid" aria-pressed="false">Eid</button>
+  <button class="filter-btn" data-filter="newyear" aria-pressed="false">New Year</button>
+      </div>
+    </div>
+
+    <div class="gallery" id="postersGallery">
+      <!-- Posters will be loaded dynamically -->
+    </div>
+  </section>
+
+  <!-- Templates Section -->
+  <section class="container" id="templates">
+    <div class="section-header">
+      <h2 class="section-title">🖋️ Editable Templates</h2>
+      <div class="filter-options">
+  <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+  <button class="filter-btn" data-filter="psd" aria-pressed="false">PSD</button>
+  <button class="filter-btn" data-filter="ai" aria-pressed="false">AI</button>
+  <button class="filter-btn" data-filter="canva" aria-pressed="false">Canva</button>
+      </div>
+    </div>
+
+    <div class="gallery" id="templatesGallery">
+      <!-- Templates will be loaded dynamically -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>FestiveDesigns</h3>
+        <p>Premium festival posters and templates for all your celebration needs.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#posters">Festival Posters</a></li>
+          <li><a href="#templates">Editable Templates</a></li>
+          <li><a href="admin.html">Admin Panel</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h3>Categories</h3>
+        <ul class="footer-links">
+          <li><a href="#" data-filter="christmas">Christmas</a></li>
+          <li><a href="#" data-filter="diwali">Diwali</a></li>
+          <li><a href="#" data-filter="eid">Eid</a></li>
+          <li><a href="#" data-filter="newyear">New Year</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; 2023 FestiveDesigns. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Download Modal -->
+  <div class="modal" id="downloadModal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h3>Download File</h3>
+      <p id="modalMessage">Your download will start shortly...</p>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="confirmDownload">Download Now</button>
+        <button class="btn btn-secondary" id="cancelDownload">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
